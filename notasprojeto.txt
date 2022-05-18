@@ -1,0 +1,16 @@
+1. nome equipe e ativ no projeto
+2.nome do projeto
+3. o que é o projeto
+ 3.1 seu objetivo
+   aqui
+ 3.2 público alvo 
+   aqui
+ 3.3 qual a dor que ele resolve
+   aqui
+ 3.4 vantagens de usar meu projeto
+   aqui
+4. análise de requisitos]
+5. cronograma do projeto
+6. estrutura do banco de dados
+7. layout do projeto
+8. funcionalidades

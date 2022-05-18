@@ -61,6 +61,19 @@
     color: #ffffff;
    }
 
+   .btnativado{
+    border-radius: 11px 12px 12px 12px;
+    margin: 10px 0px 10px 0px;
+    padding: 15px 40px;
+    background-color: #19975a;
+    color: #f8f8f8;
+    -webkit-transition: background-color 400ms ease;
+    transition: background-color 400ms ease;
+    font-size: 14px;
+    text-transform: uppercase;
+    text-decoration: none;
+   }
+
    .abtn:hover {
     color: #cacaca;
   }

@@ -46,22 +46,14 @@
         <div class="w-container"><a href="#" data-w-id="53a7664c-23a9-741b-01d1-3dbb83626754" class="close-link">FECHAR
                 ✕</a>
             <div class="form-wrapper">
-                <div class="contact-heading">Entrar em Contato</div>
+                <div class="contact-heading">Login de administrador</div>
                 <div class="small-divider"></div>
                 <div class="contact-text">Obrigado pelo interesse! Por favor preencha o formulário abaixo se desejar trabalhar junto.</div>
                 <div class="w-form">
-                    <form id="email-form" name="email-form" data-name="Email Form" method="get">
-                        <input type="text" class="text-field w-input" maxlength="256" name="name" data-name="Name" placeholder="Insira seu nome"
-                         id="name" />
-
-                         <input type="email" class="text-field w-input"maxlength="256" name="email" data-name="Email" 
-                         placeholder="Insira seu endereço de email" id="email" required="" />
-
-                         <textarea id="Project-details" name="Project-details" placeholder="Quais são seus detalhes do projeto..." maxlength="5000"
-                          data-name="Project details" class="text-field text-area w-input">
-                        </textarea>
-                        
-                        <input type="submit" value="Send" data-wait="Por favor espere..." class="submit-button w-button" />
+                <form id="email-form" name="email-form" data-name="Email Form" method="get">
+                        <input type="text" class="text-field w-input" maxlength="256" name="name" data-name="Name" placeholder="Insira seu nome" id="name" />
+                        <input type="email" class="text-field w-input" maxlength="256" name="email" data-name="Email" placeholder="Insira seu endereço de email" id="email" required="" />
+                        <input type="submit" value="Entrar" data-wait="Por favor espere..." class="submit-button w-button" />
                     </form>
                     <div class="success-message w-form-done">
                         <p class="success-text">Obrigado! Seu pedido foi enviado!</p>
@@ -81,10 +73,10 @@
                     <div class="logo-text">Siste<strong data-new-link="true">MAX</strong></div>
                 </a>
                 <nav role="navigation" class="nav-menu w-nav-menu"><a href="index.html" class="nav-link w-nav-link">Home</a>
-                    <a href="dispositivos.html" aria-current="page" class="nav-link w-nav-link w--current">dispositivos<br />‍</a>
+                    <a href="dispositivos.php" aria-current="page" class="nav-link w-nav-link w--current">dispositivos<br />‍</a>
                     <a href="anuncio.html" class="nav-link w-nav-link">Anúncios</a>
                     <a href="agendamentos.html" class="nav-link w-nav-link">agendamentos</a>
-                    <a href="#" data-w-id="c66b3b9e-8533-cf7e-3626-5291fef080a4" class="nav-link contact w-nav-link">Contato</a>
+                    <a href="#" data-w-id="c66b3b9e-8533-cf7e-3626-5291fef080a4" class="nav-link contact w-nav-link">Admin</a>
                 </nav>
                 <div class="menu-button w-nav-button">
                     <div class="w-icon-nav-menu"></div>
@@ -96,6 +88,16 @@
     <div class="section wf-section">
         <div class="w-container">
             <div class="w-dyn-list">
+            <?php
+                    include_once('config/conexao.php');
+                      $select = "SELECT * FROM tb_dispositivos ORDER BY id_dispo ASC";
+                      try{
+                        $resultado = $conect->prepare($select);
+                        $resultado->execute();
+                        $contar = $resultado->rowCount();
+                        if($contar > 0){
+                          while($show = $resultado->FETCH(PDO::FETCH_OBJ)){   
+                    ?>
                 <div role="list" class="w-dyn-items w-row">
                     <div role="listitem" class="blog-block w-dyn-item w-col w-col-4">
                         <div class="project-link blog-link w-inline-block">
@@ -105,46 +107,22 @@
                             <div style="background-image:url(&quot;./assets/tv001.jpg&quot;);-webkit-transform:translate3d(0, 0, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-moz-transform:translate3d(0, 0, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-ms-transform:translate3d(0, 0, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);transform:translate3d(0, 0, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0)"
                                 class="blog-image"></div>
                         </div>
-                        <div class="blog-title">TV LG - H5N4BD75</div>
-                        <a class="abtn btn" href="editar.html">Configurar</a>
+                        <div class="blog-title"><?php echo $show->nome_dispo;?></div>
+                        <a class="abtn btn" href="editar.php?idUp=<?php echo $show->id_dispo;?>">Configurar</a>
                         </div>
                     </div>
-                    <div role="listitem" class="blog-block w-dyn-item w-col w-col-4">
-                        <div class="project-link blog-link w-inline-block">
-                        <div class="blog-image-wrapper">
-                           <!-- <div class="blog-date">April 29, 2022</div>-->
-                            <div style="background-color:#78ff29" class="blog-category">2 Andar</div>
-                            <div style="background-image:url(&quot;./assets/tv002.jpg&quot;);-webkit-transform:translate3d(0, 0, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-moz-transform:translate3d(0, 0, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-ms-transform:translate3d(0, 0, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);transform:translate3d(0, 0, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0)"
-                                class="blog-image"></div>
-                        </div>
-                        <div class="blog-title">TV LG - 8UIFN436</div>
-                        <a class="abtn btn" href="editar.html">Configurar</a>
-                        </div>
+
                     </div>
-                    <div role="listitem" class="blog-block w-dyn-item w-col w-col-4">
-                        <div class="project-link blog-link w-inline-block">
-                        <div class="blog-image-wrapper">
-                           <!-- <div class="blog-date">April 29, 2022</div>-->
-                            <div style="background-color:#29ffe2" class="blog-category">3 Andar</div>
-                            <div style="background-image:url(&quot;./assets/tv003.jpg&quot;);-webkit-transform:translate3d(0, 0, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-moz-transform:translate3d(0, 0, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-ms-transform:translate3d(0, 0, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);transform:translate3d(0, 0, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0)"
-                                class="blog-image"></div>
-                        </div>
-                        <div class="blog-title">TV LG - 9FHN41D6</div>
-                        <a class="abtn btn" href="editar.html">Configurar</a>
-                        </div>
-                    </div>
-                    <div role="listitem" class="blog-block w-dyn-item w-col w-col-4">
-                        <div class="project-link blog-link w-inline-block">
-                        <div class="blog-image-wrapper">
-                           <!-- <div class="blog-date">April 29, 2022</div>-->
-                            <div style="background-color:#9829ff" class="blog-category">4 Andar</div>
-                            <div style="background-image:url(&quot;./assets/tv004.jpeg&quot;);-webkit-transform:translate3d(0, 0, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-moz-transform:translate3d(0, 0, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-ms-transform:translate3d(0, 0, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);transform:translate3d(0, 0, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0)"
-                                class="blog-image"></div>
-                        </div>
-                        <div class="blog-title">TV LG - IJFWE859</div>
-                        <a class="abtn btn" href="editar.html">Configurar</a>
-                        </div>
-                    </div>
+                    <?php
+                      }
+                    }else{
+                      echo 'Não há contatos cadastrados !!!';
+                    }
+                  }catch(PDOException $e){
+                    echo '<strong>ERRO DE PDO= </strong>'.$e->getMessage();
+                  }
+            
+                    ?>
                             <!--<div class="blog-description">Learn the tips and tricks needed to be the best you can be.
                             </div> 
                             <div>
@@ -173,7 +151,7 @@
                         class="nav-link footer-link contact">Contact</a>
                         <a href="agendamentos.html" aria-current="page" class="nav-link footer-link">Agendamentos</a>
                         <a href="anuncio.html" class="nav-link footer-link">Anúncios</a>
-                        <a href="dispositivos.html" class="nav-link footer-link w--current">Dispositivos</a>
+                        <a href="dispositivos.php" class="nav-link footer-link w--current">Dispositivos</a>
                         <a href="index.html" class="nav-link footer-link">Home</a></div>
             </div>
         </div>

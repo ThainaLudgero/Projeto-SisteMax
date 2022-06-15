@@ -94,7 +94,7 @@
             <div class="w-dyn-list">
                  <?php
                     include_once('config/conexao.php');
-                      $select = "SELECT * FROM tb_odonto ORDER BY id_odonto ASC";
+                      $select = "SELECT * FROM tb_cardio ORDER BY id_cardio ASC";
                       try{
                         $resultado = $conect->prepare($select);
                         $resultado->execute();
@@ -104,11 +104,11 @@
                     ?>
                 <div role="list" class="w-clearfix w-dyn-items w-row">
                     <div role="listitem" class="project-block w-dyn-item w-col w-row-4"><a
-                            href="cadastrarodonto.php?idUp=<?php echo $show->id_odonto;?>"  class="project-link w-inline-block">
+                            href="cadastrar.php?idUp=<?php echo $show->id_cardio;?>"  class="project-link w-inline-block">
                             <div style="background-image:url(&quot;https://uploads-ssl.webflow.com/626bc227a9032758c9ec691c/626bc227a903274683ec6927_coffee-mug.jpg&quot;)"
                                 class="project-image"></div>
-                            <div style="background-color:#ff3029" class="project-tag">Próximo</div>
-                            <div class="project-title"><?php echo $show->cliente_odonto;?></div>
+                            <div style="background-color:#ff3029" class="project-tag">Esperando</div>
+                            <div class="project-title"><?php echo $show->cliente_cardio;?></div>
                         </a>
                     </div>
             </div>
@@ -116,17 +116,12 @@
             <?php
                       }
                     }else{
-                      echo '<div class="container">
-                                <div class="alert alert-danger alert-dismissible">
-                                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-                                <h5><i class="icon fas fa-check"></i> Ops!</h5>
-                                Não há contatos cadastrados !!!
-                              </div>
-                            </div>';
+                      echo 'Não há contatos cadastrados !!!';
                     }
                   }catch(PDOException $e){
                     echo '<strong>ERRO DE PDO= </strong>'.$e->getMessage();
                   }
+            
                     ?>
         </div>
     </div>

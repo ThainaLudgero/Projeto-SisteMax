@@ -46,18 +46,15 @@
         <div class="w-container"><a href="#" data-w-id="53a7664c-23a9-741b-01d1-3dbb83626754" class="close-link">FECHAR
                 ✕</a>
             <div class="form-wrapper">
-                <div class="contact-heading">Entrar em Contato</div>
+                <div class="contact-heading">Login de administrador</div>
                 <div class="small-divider"></div>
                 <div class="contact-text">Obrigado pelo interesse! Por favor preencha o formulário abaixo se desejar trabalhar junto.</div>
                 <div class="w-form">
-                    <form id="email-form" name="email-form" data-name="Email Form" method="get"><input type="text"
-                            class="text-field w-input" maxlength="256" name="name" data-name="Name"
-                            placeholder="Insira seu nome" id="name" /><input type="email" class="text-field w-input"
-                            maxlength="256" name="email" data-name="Email" placeholder="Insira seu endereço de email"
-                            id="email" required="" /><textarea id="Project-details" name="Project-details"
-                            placeholder="Quais são seus detalhes do projeto..." maxlength="5000" data-name="Project details"
-                            class="text-field text-area w-input"></textarea><input type="submit" value="Send"
-                            data-wait="Por favor espere..." class="submit-button w-button" /></form>
+                    <form id="email-form" name="email-form" data-name="Email Form" method="get">
+                        <input type="text" class="text-field w-input" maxlength="256" name="name" data-name="Name" placeholder="Insira seu nome" id="name" />
+                        <input type="email" class="text-field w-input" maxlength="256" name="email" data-name="Email" placeholder="Insira seu endereço de email" id="email" required="" />
+                        <input type="submit" value="Entrar" data-wait="Por favor espere..." class="submit-button w-button" />
+                    </form>
                     <div class="success-message w-form-done">
                         <p class="success-text">Obrigado! Seu pedido foi enviado!</p>
                     </div>
@@ -75,10 +72,10 @@
                     <div class="logo-text">Siste<strong data-new-link="true">MAX</strong></div>
                 </a>
                 <nav role="navigation" class="nav-menu w-nav-menu"><a href="index.html" class="nav-link w-nav-link">Home</a>
-                    <a href="dispositivos.html" class="nav-link w-nav-link">dispositivos<br />‍</a>
+                    <a href="dispositivos.php" class="nav-link w-nav-link">dispositivos<br />‍</a>
                     <a href="anuncio.html" aria-current="page" class="nav-link w-nav-link w--current">Anúncios</a>
                     <a href="agendamentos.html" class="nav-link w-nav-link">agendamentos</a>
-                    <a href="#" data-w-id="c66b3b9e-8533-cf7e-3626-5291fef080a4" class="nav-link contact w-nav-link">Contato</a>
+                    <a href="#" data-w-id="c66b3b9e-8533-cf7e-3626-5291fef080a4" class="nav-link contact w-nav-link">Admin</a>
                 </nav>
                 <div class="menu-button w-nav-button">
                     <div class="w-icon-nav-menu"></div>
@@ -101,7 +98,7 @@
                                 class="blog-image"></div>
                         </div>
                         <div class="blog-title">Carnaval</div>
-                        <a class="btnativado" href="#">Habilitado</a>
+                            <button id="botao" class="btn" >Habilitar</button>
                         </div>
                     </div>
 
@@ -114,7 +111,7 @@
                                 class="blog-image"></div>
                         </div>
                         <div class="blog-title">Páscoa</div>
-                        <a class="abtn btn" role="button" href="#">Habilitar</a>
+                        <button id="botao" class="btn" role="button" >Habilitar</button>
                         </div>
                     </div>
 
@@ -127,7 +124,7 @@
                                 class="blog-image"></div>
                         </div>
                         <div class="blog-title">Dias das mães</div>
-                        <a class="abtn btn" href="#">Habilitar</a>
+                        <button id="botao" class="btn" >Habilitar</button>
                         </div>
                     </div>
 
@@ -140,9 +137,10 @@
                                 class="blog-image"></div>
                         </div>
                         <div class="blog-title">Festa junina</div>
-                        <a class="abtn btn" href="#">Habilitar</a>
+                        <button id="botao" class="btn">Habilitar</button>
                         </div>
                     </div>
+
 
                 </div>
             </div>
@@ -164,7 +162,7 @@
                     <a href="#" data-ix="show-contact-overlay" class="nav-link footer-link contact">Contact</a>
                         <a href="agendamentos.html" class="nav-link footer-link">Agendamentos</a>
                         <a href="anuncio.html" aria-current="page" class="nav-link footer-link w--current">Anúncios</a>
-                        <a href="dispositivos.html" class="nav-link footer-link">Dispositivos</a>
+                        <a href="dispositivos.php" class="nav-link footer-link">Dispositivos</a>
                         <a href="index.html" class="nav-link footer-link">Home</a></div>
             </div>
         </div>

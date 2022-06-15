@@ -46,18 +46,15 @@
         <div class="w-container"><a href="#" data-w-id="53a7664c-23a9-741b-01d1-3dbb83626754" class="close-link">FECHAR
                 ✕</a>
             <div class="form-wrapper">
-                <div class="contact-heading">Entrar em Contato</div>
+                <div class="contact-heading">Login de administrador</div>
                 <div class="small-divider"></div>
                 <div class="contact-text">Obrigado pelo interesse! Por favor preencha o formulário abaixo se desejar trabalhar junto.</div>
                 <div class="w-form">
-                    <form id="email-form" name="email-form" data-name="Email Form" method="get"><input type="text"
-                            class="text-field w-input" maxlength="256" name="name" data-name="Name"
-                            placeholder="Insira seu nome" id="name" /><input type="email" class="text-field w-input"
-                            maxlength="256" name="email" data-name="Email" placeholder="Insira seu endereço de email"
-                            id="email" required="" /><textarea id="Project-details" name="Project-details"
-                            placeholder="Quais são seus detalhes do projeto..." maxlength="5000" data-name="Project details"
-                            class="text-field text-area w-input"></textarea><input type="submit" value="Send"
-                            data-wait="Por favor espere..." class="submit-button w-button" /></form>
+                <form id="email-form" name="email-form" data-name="Email Form" method="get">
+                        <input type="text" class="text-field w-input" maxlength="256" name="name" data-name="Name" placeholder="Insira seu nome" id="name" />
+                        <input type="email" class="text-field w-input" maxlength="256" name="email" data-name="Email" placeholder="Insira seu endereço de email" id="email" required="" />
+                        <input type="submit" value="Entrar" data-wait="Por favor espere..." class="submit-button w-button" />
+                    </form>
                     <div class="success-message w-form-done">
                         <p class="success-text">Obrigado! Seu pedido foi enviado!</p>
                     </div>
@@ -79,28 +76,17 @@
                     <a href="dispositivos.php" aria-current="page" class="nav-link w-nav-link w--current">dispositivos<br />‍</a>
                     <a href="anuncio.html" class="nav-link w-nav-link">Anúncios</a>
                     <a href="agendamentos.html" class="nav-link w-nav-link">agendamentos</a>
-                    <a href="#" data-w-id="c66b3b9e-8533-cf7e-3626-5291fef080a4" class="nav-link contact w-nav-link">Contato</a>
+                    <a href="#" data-w-id="c66b3b9e-8533-cf7e-3626-5291fef080a4" class="nav-link contact w-nav-link">Admin</a>
                 </nav>
                 <div class="menu-button w-nav-button">
                     <div class="w-icon-nav-menu"></div>
                 </div>
             </div>
         </div>
-        <h1>Cadastro do Cliente</h1>
-    </div>
-    <div class="section wf-section">
-        <div class="w-container">
-            <div class="w-dyn-list">
-                <div role="list" class="w-dyn-items w-row">
-                    <div class="form-wrapper">
-                        <div class="editar-heading">Informações de cadastro</div>
-                        <div class="small-divider"></div>
-                        <!--<div class="contact-text">Obrigado pelo interesse! Por favor preencha o formulário abaixo se desejar trabalhar junto.</div>-->
-                        <div class="w-form">
-                            <?php
+        <?php
                             include_once('config/conexao.php');
                             $id=$_GET['idUp'];
-                            $select = "SELECT * FROM tb_agendamentos WHERE id_agenda = :id ";
+                            $select = "SELECT * FROM tb_dispositivos WHERE id_dispo = :id ";
                             try{
                                 $resultSel = $conect->prepare($select);
                                 $resultSel->bindParam(':id',$id,PDO::PARAM_INT);
@@ -109,12 +95,11 @@
                                 $contar=$resultSel->rowCount();
                                 if($contar>0){
                                     while($show = $resultSel->FETCH(PDO::FETCH_OBJ)){
-                                        $id = $show->id_agenda;
-                                        $nome = $show->cliente_agenda;
-                                        $doutor = $show->prof_agenda;
-                                        $preco = $show->preco_agenda;
-                                        $data = $show->data_agenda;
-                                        $andar = $show->andar_agenda;
+                                        $id = $show->id_dispo;
+                                        $nome = $show->nome_dispo;
+                                        $marca = $show->marca_dispo;
+                                        $foto = $show->foto_dispo;
+                                        $andar = $show->andar_dispo;
                                     }  
                                 }else{
                                     echo 'Contato não inserido!';
@@ -124,87 +109,45 @@
                             }
                             
                             ?>
-                            <form action="" enctype="multipart/form-data" id="email-form" name="email-form" data-name="Email Form" method="post">
+        <h1>Editar dispositivo</h1>
+    </div>
+    <div class="section wf-section">
+        <div class="w-container">
+            <div class="w-dyn-list">
+           
+                <div role="list" class="w-dyn-items w-row">
+                    <div class="form-wrapper">
+
+                        <div class="small-divider"></div>
+                        <!--<div class="contact-text">Obrigado pelo interesse! Por favor preencha o formulário abaixo se desejar trabalhar junto.</div>-->
+                        <div class="w-form">
+                        
+                            <form id="email-form" name="email-form" data-name="Email Form" method="get">
                                 <div class="label-float">
-                                <input type="text" class="text-field w-input" maxlength="256" value="<?php echo $nome;?>" name="nome" data-name="Name" placeholder="" id="name" >
-                                <label>Nome</label>
+                                <input type="text" class="text-field w-input" maxlength="256" value="<?php echo $nome;?>" name="name" data-name="Name" placeholder="" id="name" >
+                                <label>Editar nome do dispositivo</label>
                                 </div>
 
                                 <div class="label-float">
-                                 <input type="text" class="text-field w-input" maxlength="256" value="<?php echo $doutor; ?>" name="doutor" data-name="Text" 
-                                 placeholder="" id="email" />
-                                 <label>Doutor(a)</label>
+                                 <input type="marca" class="text-field w-input" maxlength="256" value="<?php echo $marca;?>" name="marca" data-name="marca" 
+                                 placeholder="" id="marca" />
+                                 <label>Marca</label>
                                 </div>
-                                
-                                <div class="label-float">
-                                    <input type="text" class="text-field w-input" maxlength="256" value="<?php echo $preco; ?>" name="preco" data-name="Text" 
-                                    placeholder="" id="email" />
-                                    <label>Preço</label>
-                                </div>       
-                                 
-                                <div class="label-float">
-                                <input type="datetime-local" value="2022-05-17T08:49" value="<?php echo $data; ?>" name="data" id="consultadata">
-                                <label>Horário</label>
-                                </div>    
-                                
+
+                                <input  class="foto-arquivo" type="file" name="Fotodisp" id="Fotodisp">
+                                <span><?php echo $foto; ?></span>
+
+
                                 <br>
-                                <br>
-                                  <select class="select-drop" name="andar" id="Andar">
+                                  <select class="select-drop" name="Andar" id="Andar">
                                       <option value="Pandar" selected>1 Andar</option>
                                       <option value="Sandar">2 Andar</option>
                                       <option value="Tandar">3 Andar</option>
                                       <option value="Qandar">4 Andar</option>
                                   </select>
-                                
-                                <input name="btnEditar" type="submit" value="Salvar" data-wait="Por favor espere..." class="submit-button w-button" />
+                            
+                                <input type="submit" value="Salvar" data-wait="Por favor espere..." class="submit-button w-button" />
                             </form>
-                            <?php
-                                              if(isset($_POST['btnEditar'])){
-                                                $nomeCl = $_POST['nome'];
-                                                $doutorCl= $_POST['doutor'];
-                                                $precoCl = $_POST['preco'];
-                                                $dataCl = $_POST['data'];
-                                                $andarCl = $_POST['andar'];
-
-                                                $editar = "UPDATE tb_agendamentos SET cliente_agenda=:nomeCl,prof_agenda=
-                                                :doutorCl,preco_agenda=:precoCl,data_agenda=:dataCl,andar_agenda=:andarCl, WHERE 
-                                                id_agenda=:id";
-                                                try{
-                                                  $result = $conect->prepare($editar);
-                                                  $result->bindParam(':id',$id,PDO::PARAM_STR);
-                                                  $result->bindParam(':nomeCl',$nomeCl,PDO::PARAM_STR);
-                                                  $result->bindParam(':doutorCl',$doutorCl,PDO::PARAM_STR);
-                                                  $result->bindParam(':precoCl',$precoCl,PDO::PARAM_STR);
-                                                  $result->bindParam(':dataCl',$dataCl,PDO::PARAM_STR);
-                                                  $result->bindParam(':andarCl',$andarCl,PDO::PARAM_STR);
-
-
-                                                  $result->execute();
-                          
-                                                  $contar = $result->rowCount();
-                                                  if($contar > 0){
-                                                    echo 'Contato inserido com sucesso !!!';
-                                                  }else{
-                                                    echo 'Contato não cadastrados !!!';
-                                                  }
-                                                }catch(PDOException $e){
-                                                  echo "<strong>ERRO DE CADASTRO PDO = </strong>".$e->getMessage();
-                                                }
-                          
-                          
-                          
-                          
-                          
-                          
-                          
-                          
-                                                
-                          
-                                                
-                                            }
-                          
-
-                            ?>
                             <div class="success-message w-form-done">
                                 <p class="success-text">Obrigado! Seu pedido foi enviado!</p>
                             </div>
@@ -212,6 +155,7 @@
                                 <p>Oops! Algo errado aconteceu no envio do formulário</p>
                             </div>
                         </div>
+                       
                     </div>
                 </div>
             </div>

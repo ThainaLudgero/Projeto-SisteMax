@@ -94,99 +94,113 @@
                         <div class="small-divider"></div>
                         <!--<div class="contact-text">Obrigado pelo interesse! Por favor preencha o formulário abaixo se desejar trabalhar junto.</div>-->
                         <div class="w-form">
-                            <form enctype="multipart/form-data" action="" 
-                            id="email-form" name="email-form" data-name="Email Form" method="post">
+                            <?php
+                            include_once('config/conexao.php');
+                            $id=$_GET['idUp'];
+                            $select = "SELECT * FROM tb_cardio WHERE id_cardio = :id ";
+                            try{
+                                $resultSel = $conect->prepare($select);
+                                $resultSel->bindParam(':id',$id,PDO::PARAM_INT);
+                                $resultSel->execute();
+            
+                                $contar=$resultSel->rowCount();
+                                if($contar>0){
+                                    while($show = $resultSel->FETCH(PDO::FETCH_OBJ)){
+                                        $id = $show->id_cardio;
+                                        $nome = $show->cliente_cardio;
+                                        $doutor = $show->prof_cardio;
+                                        $preco = $show->preco_cardio;
+                                        $data = $show->data_cardio;
+                                        $andar = $show->andar_cardio;
+                                    }  
+                                }else{
+                                    echo 'Contato não inserido!';
+                                }
+                            }catch(PDOException $e){
+                              echo "<strong>ERRO DE SELECT NO PDO: </strong>".$e->getMessage();
+                            }
+                            
+                            ?>
+                            <form action="" enctype="multipart/form-data" id="email-form" name="email-form" data-name="Email Form" method="post">
                                 <div class="label-float">
-                                <input type="text" class="text-field w-input" maxlength="256" name="nome" data-name="Name" placeholder="" id="name" >
+                                <input type="text" class="text-field w-input" maxlength="256" value="<?php echo $nome;?>" name="nome" data-name="Name" placeholder="" id="name" >
                                 <label>Nome</label>
                                 </div>
 
                                 <div class="label-float">
-                                 <input type="text" class="text-field w-input" maxlength="256" name="marca" data-name="Text" 
-                                 placeholder="" id="marca" />
-                                 <label>Marca</label>
+                                 <input type="text" class="text-field w-input" maxlength="256" value="<?php echo $doutor; ?>" name="doutor" data-name="Text" 
+                                 placeholder="" id="email" />
+                                 <label>Doutor(a)</label>
                                 </div>
-
+                                
                                 <div class="label-float">
-                                    <input type="text" class="text-field w-input" maxlength="256" name="resp" data-name="Text" 
-                                    placeholder="" id="resp" />
-                                    <label>Responsável</label>
-                                </div>        
+                                    <input type="text" class="text-field w-input" maxlength="256" value="<?php echo $preco; ?>" name="preco" data-name="Text" 
+                                    placeholder="" id="email" />
+                                    <label>Preço</label>
+                                </div>       
+                                 
+                                <div class="label-float">
+                                <input type="datetime-local" value="2022-05-17T08:49" value="<?php echo $data; ?>" name="data" id="consultadata">
+                                <label>Horário</label>
+                                </div>    
                                 
                                 <br>
-
+                                <br>
                                   <select class="select-drop" name="andar" id="Andar">
-                                      <option value="1" selected>1 Andar</option>
-                                      <option value="2">2 Andar</option>
-                                      <option value="3">3 Andar</option>
-                                      <option value="4">4 Andar</option>
+                                      <option value="Pandar" selected>1 Andar</option>
+                                      <option value="Sandar">2 Andar</option>
+                                      <option value="Tandar">3 Andar</option>
+                                      <option value="Qandar">4 Andar</option>
                                   </select>
-                                  <br>
-                                  <br>
-                                  <br>
-                                  <div>
-                                    <label class="fundo" for="fotodisp"> Upload da foto </label>
-                                    <input type="file" name="foto" id="foto">
-                                  </div>  
-                                <input name="btnCadastro" type="submit" value="Salvar" data-wait="Por favor espere..." class="submit-button w-button" />
                                 
+                                <input name="btnEditar" type="submit" value="Salvar" data-wait="Por favor espere..." class="submit-button w-button" />
                             </form>
                             <?php
-                            include_once('config/conexao.php');
-                            if(isset($_POST['btnCadastro'])){
-                                $nome = $_POST['nome'];
-                                $marca = $_POST['marca'];
-                                $resp = $_POST['resp'];
-                                $andar = $_POST['andar'];
-                                $formatP = array("png","jpg","jpeg","JPG");
-                                $extensao = pathinfo($_FILES['foto']['name'], PATHINFO_EXTENSION);
+                                              if(isset($_POST['btnEditar'])){
+                                                $nomeCl = $_POST['nome'];
+                                                $doutorCl= $_POST['doutor'];
+                                                $precoCl = $_POST['preco'];
+                                                $dataCl = $_POST['data'];
+                                                $andarCl = $_POST['andar'];
 
-                                if(in_array($extensao, $formatP)){
-                                    $pasta = "img/contato/";
-                                    $temporario = $_FILES['foto']['tmp_name'];
-                                    $novoNome = uniqid().".$extensao";
-                                    if(move_uploaded_file($temporario, $pasta.$novoNome)){
-                                        $cadastro = "INSERT INTO tb_dispositivos (nome_dispo, marca_dispo, resp_dispo, andar_dispo) VALUES (:nome, :marca, :resp, :andar, :foto)";
-                                    try{
-                                        $result = $conect->prepare($cadastro);
-                                        $result->bindParam(':nome',$nome,PDO::PARAM_STR);
-                                        $result->bindParam(':marca',$marca,PDO::PARAM_STR);
-                                        $result->bindParam(':resp',$resp,PDO::PARAM_STR);
-                                        $result->bindParam(':andar',$andar,PDO::PARAM_STR);
-                                        $result->bindParam(':foto',$novoNome,PDO::PARAM_STR);
-                                        $result->execute();
-                                        $contar = $result->rowCount();
-                                        if($contar > 0){
-                                            echo '<div class="container">
-                                                      <div class="alert alert-success alert-dismissible">
-                                                      <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-                                                      <h5><i class="icon fas fa-check"></i> OK!</h5>
-                                                      Contato inserido com sucesso !!!
-                                                    </div>
-                                                  </div>';
-                                          }else{
-                                            echo '<div class="container">
-                                                      <div class="alert alert-danger alert-dismissible">
-                                                      <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-                                                      <h5><i class="icon fas fa-check"></i> Ops!</h5>
-                                                      Contato não cadastrados !!!
-                                                    </div>
-                                                  </div>';
-                                          }
-                                    }catch(PDOException $e){
-                                        echo "<strong>ERRO DE CADASTRO PDO = </strong>".$e->getMessage();
-                                    }
-                                    }else{
-                                        echo "Erro, não foi possível fazer o upload do arquivo!";
-                                      }
-            
-                                  }else{
-                                    echo "Formato Inválido";
-                                  }
+                                                $editar = "UPDATE tb_cardio SET cliente_cardio=:nomeCl,prof_cardio=
+                                                :doutorCl,preco_cardio=:precoCl,data_cardio=:dataCl,andar_cardio=:andarCl, WHERE 
+                                                id_cardio=:id";
+                                                try{
+                                                  $result = $conect->prepare($editar);
+                                                  $result->bindParam(':id',$id,PDO::PARAM_STR);
+                                                  $result->bindParam(':nomeCl',$nomeCl,PDO::PARAM_STR);
+                                                  $result->bindParam(':doutorCl',$doutorCl,PDO::PARAM_STR);
+                                                  $result->bindParam(':precoCl',$precoCl,PDO::PARAM_STR);
+                                                  $result->bindParam(':dataCl',$dataCl,PDO::PARAM_STR);
+                                                  $result->bindParam(':andarCl',$andarCl,PDO::PARAM_STR);
 
-                                }
 
-                            
+                                                  $result->execute();
+                          
+                                                  $contar = $result->rowCount();
+                                                  if($contar > 0){
+                                                    echo 'Contato inserido com sucesso !!!';
+                                                  }else{
+                                                    echo 'Contato não cadastrados !!!';
+                                                  }
+                                                }catch(PDOException $e){
+                                                  echo "<strong>ERRO DE CADASTRO PDO = </strong>".$e->getMessage();
+                                                }
+                          
+                          
+                          
+                          
+                          
+                          
+                          
+                          
+                                                
+                          
+                                                
+                                            }
+                          
+
                             ?>
                             <div class="success-message w-form-done">
                                 <p class="success-text">Obrigado! Seu pedido foi enviado!</p>

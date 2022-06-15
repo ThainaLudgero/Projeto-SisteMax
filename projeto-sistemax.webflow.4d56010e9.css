@@ -88,7 +88,7 @@
 
    .btnativado{
     border-radius: 12px 12px 12px 12px;
-    margin: 10px 0px 10px 0px;
+    margin: 0px 0px 10px 0px;
     padding: 15px 40px;
     background-color: #19975a;
     color: #f8f8f8;
@@ -631,7 +631,7 @@
 
    .btn {
     border-radius: 11px 12px 12px 12px;
-    margin: 10px 0px 10px 0px;
+    margin: 0px 0px 10px 0px;
     padding: 15px 40px;
     background-color: #aaaaaa;
     color: #f8f8f8;
@@ -639,11 +639,18 @@
     transition: background-color 400ms ease;
     font-size: 14px;
     text-transform: uppercase;
+    -webkit-transition: color 400ms ease;
+    transition: color 400ms ease;
   }
 
   .btn:hover {
     background-color: #cacaca;
     color: rgb(255, 255, 255);
+  }
+
+  .btn:active,.btn:visited,.btn:focus {
+    content: 'Habilitado';
+    background-color: #19975a;
   }
    
    .project-image {
@@ -682,7 +689,7 @@
      position: absolute;
      top: 25px;
      right: 25px;
-     padding: 9px 10px 8px;
+     padding: 15px 30px 16px;
      border-radius: 3px;
      opacity: 1;
      color: #fff;
@@ -705,7 +712,7 @@
    }
    
    .project-link.blog-link {
-     height: 280px;
+     
    }
    
    .project-link.blog-link:hover {

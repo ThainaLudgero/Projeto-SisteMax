@@ -1,24 +1,24 @@
 <!DOCTYPE html><!-- This site was created in Webflow. http://www.webflow.com -->
 <!-- Last Published: Fri Apr 29 2022 13:46:12 GMT+0000 (Coordinated Universal Time) -->
-<html data-wf-domain="projeto-sistemax.webflow.io" data-wf-page="626bc227a90327d84cec690e"
+<html data-wf-domain="projeto-sistemax.webflow.io" data-wf-page="626bc227a903272737ec6915"
     data-wf-site="626bc226a903276931ec6905">
 
 <head>
     <meta charset="utf-8" />
-    <title>Blog</title>
-    <meta content="View all of our most recent blog posts, and learn how you can hire us for your next project."
+    <title>Agendamentos</title>
+    <meta content="View all of our most recent projects, and learn how you can hire us for your next project."
         name="description" />
-    <meta content="Blog" property="og:title" />
-    <meta content="View all of our most recent blog posts, and learn how you can hire us for your next project."
+    <meta content="Portfolio" property="og:title" />
+    <meta content="View all of our most recent projects, and learn how you can hire us for your next project."
         property="og:description" />
-    <meta content="Blog" property="twitter:title" />
-    <meta content="View all of our most recent blog posts, and learn how you can hire us for your next project."
+    <meta content="Portfolio" property="twitter:title" />
+    <meta content="View all of our most recent projects, and learn how you can hire us for your next project."
         property="twitter:description" />
     <meta property="og:type" content="website" />
     <meta content="summary_large_image" name="twitter:card" />
     <meta content="width=device-width, initial-scale=1" name="viewport" />
     <meta content="Webflow" name="generator" />
-    <link href="https://uploads-ssl.webflow.com/626bc226a903276931ec6905/css/projeto-sistemax.webflow.4d56010e9.css"
+    <link href="projeto-sistemax.webflow.4d56010e9.css"
         rel="stylesheet" type="text/css" />
     <script src="https://ajax.googleapis.com/ajax/libs/webfont/1.6.26/webfont.js" type="text/javascript"></script>
     <script type="text/javascript">
@@ -68,17 +68,18 @@
             </div>
         </div>
     </div>
-    <div class="hero-section blog-hero wf-section">
-        <div class="hero-overlay"></div>
+
+    
+    <div class="hero-section portfolio-hero1 wf-section">
         <div data-collapse="medium" data-animation="default" data-duration="400" data-easing="ease" data-easing2="ease"
             role="banner" class="nav w-nav">
             <div class="w-container"><a href="index.html" class="w-nav-brand">
                     <div class="logo-text">Siste<strong data-new-link="true">MAX</strong></div>
                 </a>
                 <nav role="navigation" class="nav-menu w-nav-menu"><a href="index.html" class="nav-link w-nav-link">Home</a>
-                    <a href="dispositivos.html" class="nav-link w-nav-link">dispositivos<br />‍</a>
-                    <a href="anuncio.html" class="nav-link w-nav-link">Anúncios</a>
-                    <a href="agendamentos.html" aria-current="page" class="nav-link w-nav-link w--current">agendamentos</a>
+                    <a href="dispositivos.php" class="nav-link w-nav-link">dispositivos<br />‍</a>
+                    <a href="anuncio.html" aria-current="page" class="nav-link w-nav-link">Anúncios</a>
+                    <a href="agendamentos.html" class="nav-link w-nav-link w--current">agendamentos</a>
                     <a href="#" data-w-id="c66b3b9e-8533-cf7e-3626-5291fef080a4" class="nav-link contact w-nav-link">Contato</a>
                 </nav>
                 <div class="menu-button w-nav-button">
@@ -86,50 +87,50 @@
                 </div>
             </div>
         </div>
-        <h1>My Blog</h1>
+        <h1>Setores</h1>
+        <div class="hero-overlay"></div>
     </div>
-    <div class="section wf-section">
+    <!-- SECTION WF-SECTION -->
+    <br><br>
+    <div>
         <div class="w-container">
             <div class="w-dyn-list">
-                <div role="list" class="w-dyn-items w-row">
-                    <div role="listitem" class="blog-block w-dyn-item w-col w-col-4"><a
-                            href="/blog/5-tips-to-being-the-best-designer"
-                            data-w-id="8dc1b770-c525-3040-95bf-dfd37665fd1c"
-                            class="project-link blog-link w-inline-block">
-                            <div class="blog-image-wrapper">
-                                <div class="blog-date">April 29, 2022</div>
-                                <div style="background-color:#8e54cc" class="blog-category">Web Design</div>
-                                <div style="background-image:url(&quot;https://uploads-ssl.webflow.com/626bc227a9032758c9ec691c/626bc227a903278338ec6925_sketch-ideas.jpg&quot;);-webkit-transform:translate3d(0, 0, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-moz-transform:translate3d(0, 0, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-ms-transform:translate3d(0, 0, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);transform:translate3d(0, 0, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0)"
-                                    class="blog-image"></div>
-                            </div>
-                            <div class="blog-title">5 tips to being the best designer</div>
-                            <div class="blog-description">A collection of the best tips to help you become the best
-                                designer you can be.</div>
-                            <div>
-                                <div class="blog-author">Written by</div>
-                                <div class="blog-author">John Smith</div>
-                            </div>
-                        </a></div>
-                    <div role="listitem" class="blog-block w-dyn-item w-col w-col-4"><a
-                            href="/blog/how-to-be-a-better-freelancer-this-year"
-                            data-w-id="8dc1b770-c525-3040-95bf-dfd37665fd1c"
-                            class="project-link blog-link w-inline-block">
-                            <div class="blog-image-wrapper">
-                                <div class="blog-date">April 29, 2022</div>
-                                <div style="background-color:#4294d5" class="blog-category">Startups</div>
-                                <div style="background-image:url(&quot;https://uploads-ssl.webflow.com/626bc227a9032758c9ec691c/626bc227a903270cdcec6928_take-a-pic.jpg&quot;);-webkit-transform:translate3d(0, 0, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-moz-transform:translate3d(0, 0, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-ms-transform:translate3d(0, 0, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);transform:translate3d(0, 0, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0)"
-                                    class="blog-image"></div>
-                            </div>
-                            <div class="blog-title">How to be a better freelancer this year</div>
-                            <div class="blog-description">Learn the tips and tricks needed to be the best you can be.
-                            </div>
-                            <div>
-                                <div class="blog-author">Written by</div>
-                                <div class="blog-author">John Smith</div>
-                            </div>
-                        </a></div>
-                </div>
+                 <?php
+                    include_once('config/conexao.php');
+                      $select = "SELECT * FROM tb_agendamentos ORDER BY id_agenda DESC";
+                      try{
+                        $resultado = $conect->prepare($select);
+                        $resultado->execute();
+                        $contar = $resultado->rowCount();
+                        if($contar > 0){
+                          while($show = $resultado->FETCH(PDO::FETCH_OBJ)){   
+                    ?>
+                <div role="list" class="w-clearfix w-dyn-items w-row">
+                    <div role="listitem" class="project-block w-dyn-item w-col w-row-4"><a
+                            href="cadastrar.php?idUp=<?php echo $show->id_agenda;?>"  class="project-link w-inline-block">
+                            <div style="background-image:url(&quot;https://uploads-ssl.webflow.com/626bc227a9032758c9ec691c/626bc227a903274683ec6927_coffee-mug.jpg&quot;)"
+                                class="project-image"></div>
+                            <div style="background-color:#ff3029" class="project-tag">Próximo</div>
+                            <div class="project-title">Paciente Aline</div>
+                        </a>
+                    </div>
             </div>
+            <br><br>
+            <?php
+                      }
+                    }else{
+                      echo '<div class="container">
+                                <div class="alert alert-danger alert-dismissible">
+                                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                                <h5><i class="icon fas fa-check"></i> Ops!</h5>
+                                Não há contatos cadastrados !!!
+                              </div>
+                            </div>';
+                    }
+                  }catch(PDOException $e){
+                    echo '<strong>ERRO DE PDO= </strong>'.$e->getMessage();
+                  }
+                    ?>
         </div>
     </div>
     <div class="cta-section wf-section">
@@ -144,18 +145,20 @@
                 <div class="w-col w-col-3"><a href="index.html" class="logo-footer w-nav-brand">
                         <div class="logo-text footer-logo">Siste<strong data-new-link="true">MAX</strong></div>
                     </a></div>
-                <div class="footer-link-col w-clearfix w-col w-col-9"><a href="#" data-ix="show-contact-overlay"
-                        class="nav-link footer-link contact">Contact</a><a href="/blog" aria-current="page"
-                        class="nav-link footer-link w--current">Blog</a><a href="/portfolio"
-                        class="nav-link footer-link">Portfolio</a><a href="/about"
-                        class="nav-link footer-link">About</a><a href="/" class="nav-link footer-link">Home</a></div>
+                <div class="footer-link-col w-clearfix w-col w-col-9">
+                    <a href="#" data-ix="show-contact-overlay" class="nav-link footer-link contact">Contact</a>
+                    <a href="agendamentos.html" aria-current="page" class="nav-link footer-link w--current">Agendamentos</a>
+                    <a href="anuncio.html" class="nav-link footer-link">Anúncios</a>
+                    <a href="dispositivos.html" class="nav-link footer-link">Dispositivos</a>
+                    <a href="index.html" class="nav-link footer-link">Home</a>
+                    </div>
             </div>
         </div>
     </div>
     <script src="https://d3e54v103j8qbb.cloudfront.net/js/jquery-3.5.1.min.dc5e7f18c8.js?site=626bc226a903276931ec6905"
         type="text/javascript" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous">
     </script>
-    <script src="https://uploads-ssl.webflow.com/626bc226a903276931ec6905/js/webflow.38f149819.js"
+    <script src="webflow.38f149819.js"
         type="text/javascript"></script>
     <!--[if lte IE 9]><script src="//cdnjs.cloudflare.com/ajax/libs/placeholders/3.0.2/placeholders.min.js"></script><![endif]-->
 </body>

@@ -36,6 +36,21 @@
      letter-spacing: 5px;
      text-transform: uppercase;
    }
+
+   .h1extra{
+    position: relative;
+    z-index: 10;
+    margin-top: 20px;
+    margin-bottom: 10px;
+    font-family: Lato, sans-serif;
+    color: rgb(0, 0, 0);
+    font-size: 24px;
+    line-height: 45px;
+    font-weight: 300;
+    text-align: center;
+    letter-spacing: 5px;
+    text-transform: uppercase;
+   }
    
    p {
      margin-bottom: 10px;
@@ -61,8 +76,18 @@
     color: #ffffff;
    }
 
+   
+
+   .abtnextra{
+    text-decoration: none;
+    -webkit-transition: color 400ms ease;
+    transition: color 400ms ease;
+    color: #ffffff;
+    
+   }
+
    .btnativado{
-    border-radius: 11px 12px 12px 12px;
+    border-radius: 12px 12px 12px 12px;
     margin: 10px 0px 10px 0px;
     padding: 15px 40px;
     background-color: #19975a;
@@ -74,14 +99,16 @@
     text-decoration: none;
    }
 
-   .abtn:hover {
+   .abtn:hover{
     color: #cacaca;
-  }
+  } 
 
+    .btnativado:hover{
+    color: #f8f8f8;
+  } 
+  
   .abtn:focus{
-    background-color: #19975a;
-  }
-  .btn:focus{
+    
     background-color: #19975a;
   }
 
@@ -140,7 +167,7 @@
    }
    
    .hero-section.home-page-hero {
-     background-image: url("./assets/device006.jpg");
+     background-image: url("./assets/device008.jpg");
      background-position: 50% 50%;
      background-size: cover;
    }
@@ -217,7 +244,7 @@
    .section {
      padding-top: 60px;
      padding-bottom: 60px;
-   }
+       }
    
    .section.top-section {
      padding-top: 0px;
@@ -415,11 +442,12 @@
      border-radius: 3px;
      background-color: hsla(0, 0%, 100%, 0.1);
      font-size: 16px;
+     margin-bottom: 20px;
    }
    
    .text-field:focus {
      border-color: #fe912a;
-     color: #fff;
+     
    }
 
    .text-field.text-area {
@@ -446,7 +474,7 @@
   }
   
   .label-float input:focus {
-    border: 2px solid #3951b2;
+    border: 2px solid #fe912a;
   }
   
   .label-float input::placeholder {
@@ -482,7 +510,7 @@
   .label-float input:not(:placeholder-shown)+label {
     font-size: 13px;
     top: 0;
-    color: #3951b2;
+    color: #f7af6b;
   }
    /*end*/
 
@@ -499,6 +527,7 @@
      padding-top: 16px;
      padding-bottom: 16px;
      border-radius: 3px;
+     margin-top: 20%;
      background-color: #55acee;
      -webkit-transition: background-color 400ms ease;
      transition: background-color 400ms ease;
@@ -1198,3 +1227,33 @@
        line-height: 50px;
      }
    }
+
+  .select-drop{
+    border: none;
+    cursor: pointer;
+    background-color: #ededed;
+    padding: 15px 40px;
+    border-radius: 12px 12px 12px 12px;
+    color: gray;
+    font-size: 15px;
+  }
+  
+  .foto-arquivo{
+    margin-bottom: 40px;
+  }
+
+  .fundo {
+    padding: 20px 10px;
+    width: 200px;
+    background-color: #333;
+    color: #FFF;
+    text-transform: uppercase;
+    text-align: center;
+    display: block;
+    margin-top: 10px;
+    cursor: pointer;
+  }
+
+
+
+  

@@ -86,41 +86,111 @@
                 </div>
             </div>
         </div>
-        <h1>Editar dispositivo (TV LG - H5N4BD75)</h1>
+        <h1>Cadastro do Cliente</h1>
     </div>
     <div class="section wf-section">
         <div class="w-container">
             <div class="w-dyn-list">
                 <div role="list" class="w-dyn-items w-row">
                     <div class="form-wrapper">
-                        <div class="editar-heading">Configurar Dispositivo</div>
+                        <div class="editar-heading">Informações de cadastro</div>
                         <div class="small-divider"></div>
                         <!--<div class="contact-text">Obrigado pelo interesse! Por favor preencha o formulário abaixo se desejar trabalhar junto.</div>-->
                         <div class="w-form">
-                            <form id="email-form" name="email-form" data-name="Email Form" method="get">
+                            <form enctype="multipart/form-data" action="" 
+                            id="email-form" name="email-form" data-name="Email Form" method="post">
                                 <div class="label-float">
-                                <input type="text" class="text-field w-input" maxlength="256" name="name" data-name="Name" placeholder="" id="name" >
-                                <label>Editar nome do dispositivo</label>
+                                <input type="text" class="text-field w-input" maxlength="256" name="nome" data-name="Name" placeholder="" id="name" >
+                                <label>Nome</label>
                                 </div>
 
                                 <div class="label-float">
-                                 <input type="marca" class="text-field w-input" maxlength="256" name="marca" data-name="marca" 
+                                 <input type="text" class="text-field w-input" maxlength="256" name="marca" data-name="Text" 
                                  placeholder="" id="marca" />
                                  <label>Marca</label>
                                 </div>
 
-                                <input class="foto-arquivo" type="file" name="Fotodisp" id="Fotodisp">
-
+                                <div class="label-float">
+                                    <input type="text" class="text-field w-input" maxlength="256" name="resp" data-name="Text" 
+                                    placeholder="" id="resp" />
+                                    <label>Responsável</label>
+                                </div>        
+                                
                                 <br>
-                                  <select class="select-drop" name="Andar" id="Andar">
-                                      <option value="Pandar" selected>1 Andar</option>
-                                      <option value="Sandar">2 Andar</option>
-                                      <option value="Tandar">3 Andar</option>
-                                      <option value="Qandar">4 Andar</option>
+
+                                  <select class="select-drop" name="andar" id="Andar">
+                                      <option value="1" selected>1 Andar</option>
+                                      <option value="2">2 Andar</option>
+                                      <option value="3">3 Andar</option>
+                                      <option value="4">4 Andar</option>
                                   </select>
-                            
-                                <input type="submit" value="Salvar" data-wait="Por favor espere..." class="submit-button w-button" />
+                                  <br>
+                                  <br>
+                                  <br>
+                                  <div>
+                                    <label class="fundo" for="fotodisp"> Upload da foto </label>
+                                    <input type="file" name="foto" id="foto">
+                                  </div>  
+                                <input name="btnCadastro" type="submit" value="Salvar" data-wait="Por favor espere..." class="submit-button w-button" />
+                                
                             </form>
+                            <?php
+                            include_once('config/conexao.php');
+                            if(isset($_POST['btnCadastro'])){
+                                $nome = $_POST['nome'];
+                                $marca = $_POST['marca'];
+                                $resp = $_POST['resp'];
+                                $andar = $_POST['andar'];
+                                $formatP = array("png","jpg","jpeg","JPG");
+                                $extensao = pathinfo($_FILES['foto']['name'], PATHINFO_EXTENSION);
+
+                                if(in_array($extensao, $formatP)){
+                                    $pasta = "img/contato/";
+                                    $temporario = $_FILES['foto']['tmp_name'];
+                                    $novoNome = uniqid().".$extensao";
+                                    if(move_uploaded_file($temporario, $pasta.$novoNome)){
+                                        $cadastro = "INSERT INTO tb_dispositivos (nome_dispo, marca_dispo, resp_dispo, andar_dispo) VALUES (:nome, :marca, :resp, :andar, :foto)";
+                                    try{
+                                        $result = $conect->prepare($cadastro);
+                                        $result->bindParam(':nome',$nome,PDO::PARAM_STR);
+                                        $result->bindParam(':marca',$marca,PDO::PARAM_STR);
+                                        $result->bindParam(':resp',$resp,PDO::PARAM_STR);
+                                        $result->bindParam(':andar',$andar,PDO::PARAM_STR);
+                                        $result->bindParam(':foto',$novoNome,PDO::PARAM_STR);
+                                        $result->execute();
+                                        $contar = $result->rowCount();
+                                        if($contar > 0){
+                                            echo '<div class="container">
+                                                      <div class="alert alert-success alert-dismissible">
+                                                      <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                                                      <h5><i class="icon fas fa-check"></i> OK!</h5>
+                                                      Contato inserido com sucesso !!!
+                                                    </div>
+                                                  </div>';
+                                          }else{
+                                            echo '<div class="container">
+                                                      <div class="alert alert-danger alert-dismissible">
+                                                      <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                                                      <h5><i class="icon fas fa-check"></i> Ops!</h5>
+                                                      Contato não cadastrados !!!
+                                                    </div>
+                                                  </div>';
+                                          }
+                                    }catch(PDOException $e){
+                                        echo "<strong>ERRO DE CADASTRO PDO = </strong>".$e->getMessage();
+                                    }
+                                    }else{
+                                        echo "Erro, não foi possível fazer o upload do arquivo!";
+                                      }
+            
+                                  }else{
+                                    echo "Formato Inválido";
+                                  }
+
+                                }
+
+                            
+                            ?>
                             <div class="success-message w-form-done">
                                 <p class="success-text">Obrigado! Seu pedido foi enviado!</p>
                             </div>

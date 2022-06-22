@@ -52,7 +52,7 @@
                 <div class="w-form">
                 <form id="email-form" name="email-form" data-name="Email Form" method="get">
                         <input type="text" class="text-field w-input" maxlength="256" name="name" data-name="Name" placeholder="Insira seu nome" id="name" />
-                        <input type="email" class="text-field w-input" maxlength="256" name="email" data-name="Email" placeholder="Insira seu endereço de email" id="email" required="" />
+                        <input type="email" class="text-field w-input" maxlength="256" name="email" data-name="Email" placeholder="Insira seu endereço id" id="email" required="" />
                         <input type="submit" value="Entrar" data-wait="Por favor espere..." class="submit-button w-button" />
                     </form>
                     <div class="success-message w-form-done">
@@ -104,9 +104,8 @@
                     ?>
                 <div role="list" class="w-clearfix w-dyn-items w-row">
                     <div role="listitem" class="project-block w-dyn-item w-col w-row-4"><a
-                            href="cadastrar.php?idUp=<?php echo $show->id_cardio;?>"  class="project-link w-inline-block">
-                            <div style="background-image:url(&quot;https://uploads-ssl.webflow.com/626bc227a9032758c9ec691c/626bc227a903274683ec6927_coffee-mug.jpg&quot;)"
-                                class="project-image"></div>
+                            href="cadastrarcardio.php?idUp=<?php echo $show->id_cardio;?>"  class="project-link w-inline-block">
+                            <div class="project-image"><img src="./assets/fundoavatar2.jpg" alt="fotocliente"></div>
                             <div style="background-color:#ff3029" class="project-tag">Esperando</div>
                             <div class="project-title"><?php echo $show->cliente_cardio;?></div>
                         </a>
@@ -125,12 +124,7 @@
                     ?>
         </div>
     </div>
-    <div class="cta-section wf-section">
-        <div class="w-container">
-            <div class="cta-heading">Lets Work Together</div><a href="#" data-ix="show-contact-overlay"
-                class="button w-button">Contact Me</a>
-        </div>
-    </div>
+  
     <div class="footer-section wf-section">
         <div class="w-container">
             <div class="w-row">

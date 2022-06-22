@@ -52,7 +52,7 @@
                 <div class="w-form">
                 <form id="email-form" name="email-form" data-name="Email Form" method="get">
                         <input type="text" class="text-field w-input" maxlength="256" name="name" data-name="Name" placeholder="Insira seu nome" id="name" />
-                        <input type="email" class="text-field w-input" maxlength="256" name="email" data-name="Email" placeholder="Insira seu endereço de email" id="email" required="" />
+                        <input type="email" class="text-field w-input" maxlength="256" name="email" data-name="Email" placeholder="Insira seu endereço " id="email" required="" />
                         <input type="submit" value="Entrar" data-wait="Por favor espere..." class="submit-button w-button" />
                     </form>
                     <div class="success-message w-form-done">
@@ -98,17 +98,18 @@
                         if($contar > 0){
                           while($show = $resultado->FETCH(PDO::FETCH_OBJ)){   
                     ?>
-                <div role="list" class="w-dyn-items w-row">
+                <div role="list" class="w-dyn-items" style="width: 70em;">
                     <div role="listitem" class="blog-block w-dyn-item w-col w-col-4">
-                        <div class="project-link blog-link w-inline-block">
+                        <div class="project-link blog-link w-inline-block" style="height: 300px">
                         <div class="blog-image-wrapper">
                            <!-- <div class="blog-date">April 29, 2022</div>-->
-                            <div style="background-color:#ffbb29" class="blog-category">1 Andar</div>
-                            <div style="background-image:url(&quot;./assets/tv001.jpg&quot;);-webkit-transform:translate3d(0, 0, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-moz-transform:translate3d(0, 0, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-ms-transform:translate3d(0, 0, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);transform:translate3d(0, 0, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0)"
-                                class="blog-image"></div>
+                            <div style="background-color:#ffbb29" class="blog-category"><?php echo $show->andar_dispo;?> Andar</div>
+                            <div
+                                class="blog-image"><img src="img/contato/<?php echo $show->foto_dispo;?>" alt=""></div>
                         </div>
                         <div class="blog-title"><?php echo $show->nome_dispo;?></div>
-                        <a class="abtn btn" href="editar.php?idUp=<?php echo $show->id_dispo;?>">Configurar</a>
+                        <br>
+                        <a class="btn" style="background-color: #fe912a " href="editar.php?idUp=<?php echo $show->id_dispo;?>">Configurar</a>
                         </div>
                     </div>
 
@@ -130,16 +131,16 @@
                                 <div class="blog-author">John Smith</div>
                             </div>--> 
                 </div>
-                <br>
-                <br>
-                        <h1 class="h1extra">Precisa cadastrar um dispositivo novo?</h1> 
-                       <a class="abtnextra btn" href="cadastrardispo.php">cadastrar</a>
-                <br>
-                <br>
             </div>
         </div>
+                        <h1 class="h1extra">Precisa cadastrar um dispositivo novo?</h1> 
+                       <br><br>
+                        <a class="btn" href="cadastrardispo.php" style="background-color: #fe912a; margin-left: 50em; margin-bottom: 10em; ">cadastrar</a>
+                        <br><br>
+                        <br><br>
+                        <br>
     </div>
-
+                      
     </div>
     <div class="footer-section wf-section">
         <div class="w-container">
@@ -147,8 +148,7 @@
                 <div class="w-col w-col-3"><a href="index.html" class="logo-footer w-nav-brand">
                         <div class="logo-text footer-logo">Siste<strong data-new-link="true">MAX</strong></div>
                     </a></div>
-                <div class="footer-link-col w-clearfix w-col w-col-9"><a href="#" data-ix="show-contact-overlay"
-                        class="nav-link footer-link contact">Contact</a>
+                <div class="footer-link-col w-clearfix w-col w-col-9">
                         <a href="agendamentos.html" aria-current="page" class="nav-link footer-link">Agendamentos</a>
                         <a href="anuncio.html" class="nav-link footer-link">Anúncios</a>
                         <a href="dispositivos.php" class="nav-link footer-link w--current">Dispositivos</a>

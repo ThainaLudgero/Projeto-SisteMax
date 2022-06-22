@@ -1,7 +1,0 @@
-não mexa
-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
-
-function nomebtn(){
-    //Trocando o nome
-    document.getElementById('botao').value='Habilitado';
-}

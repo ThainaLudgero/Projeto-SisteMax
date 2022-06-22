@@ -52,7 +52,7 @@
                 <div class="w-form">
                 <form id="email-form" name="email-form" data-name="Email Form" method="get">
                         <input type="text" class="text-field w-input" maxlength="256" name="name" data-name="Name" placeholder="Insira seu nome" id="name" />
-                        <input type="email" class="text-field w-input" maxlength="256" name="email" data-name="Email" placeholder="Insira seu endereço de email" id="email" required="" />
+                        <input type="email" class="text-field w-input" maxlength="256" name="email" data-name="Email" placeholder="Insira seu endereço id" id="email" required="" />
                         <input type="submit" value="Entrar" data-wait="Por favor espere..." class="submit-button w-button" />
                     </form>
                     <div class="success-message w-form-done">
@@ -73,9 +73,9 @@
                     <div class="logo-text">Siste<strong data-new-link="true">MAX</strong></div>
                 </a>
                 <nav role="navigation" class="nav-menu w-nav-menu"><a href="index.html" class="nav-link w-nav-link">Home</a>
-                    <a href="dispositivos.php" aria-current="page" class="nav-link w-nav-link w--current">dispositivos<br />‍</a>
+                    <a href="dispositivos.php"  class="nav-link w-nav-link">dispositivos<br />‍</a>
                     <a href="anuncio.html" class="nav-link w-nav-link">Anúncios</a>
-                    <a href="agendamentos.html" class="nav-link w-nav-link">agendamentos</a>
+                    <a href="agendamentos.html" aria-current="page" class="nav-link w-nav-link w--current">agendamentos</a>
                     <a href="#" data-w-id="c66b3b9e-8533-cf7e-3626-5291fef080a4" class="nav-link contact w-nav-link">Admin</a>
                 </nav>
                 <div class="menu-button w-nav-button">
@@ -97,7 +97,7 @@
                             <?php
                             include_once('config/conexao.php');
                             $id=$_GET['idUp'];
-                            $select = "SELECT * FROM tb_odonto WHERE id_odonto = :id ";
+                            $select = "SELECT * FROM tb_odonto WHERE id_odonto=:id";
                             try{
                                 $resultSel = $conect->prepare($select);
                                 $resultSel->bindParam(':id',$id,PDO::PARAM_INT);
@@ -114,7 +114,7 @@
                                         $andar = $show->andar_odonto;
                                     }  
                                 }else{
-                                    echo 'Contato não inserido!';
+                                    echo '<div class=mensagemerro>Cliente não editado!</div>';
                                 }
                             }catch(PDOException $e){
                               echo "<strong>ERRO DE SELECT NO PDO: </strong>".$e->getMessage();

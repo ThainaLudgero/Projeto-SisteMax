@@ -52,7 +52,7 @@
                 <div class="w-form">
                 <form id="email-form" name="email-form" data-name="Email Form" method="get">
                         <input type="text" class="text-field w-input" maxlength="256" name="name" data-name="Name" placeholder="Insira seu nome" id="name" />
-                        <input type="email" class="text-field w-input" maxlength="256" name="email" data-name="Email" placeholder="Insira seu endereço de email" id="email" required="" />
+                        <input type="email" class="text-field w-input" maxlength="256" name="email" data-name="Email" placeholder="Insira seu endereço id" id="email" required="" />
                         <input type="submit" value="Entrar" data-wait="Por favor espere..." class="submit-button w-button" />
                     </form>
                     <div class="success-message w-form-done">
@@ -83,32 +83,7 @@
                 </div>
             </div>
         </div>
-        <?php
-                            include_once('config/conexao.php');
-                            $id=$_GET['idUp'];
-                            $select = "SELECT * FROM tb_dispositivos WHERE id_dispo = :id ";
-                            try{
-                                $resultSel = $conect->prepare($select);
-                                $resultSel->bindParam(':id',$id,PDO::PARAM_INT);
-                                $resultSel->execute();
-            
-                                $contar=$resultSel->rowCount();
-                                if($contar>0){
-                                    while($show = $resultSel->FETCH(PDO::FETCH_OBJ)){
-                                        $id = $show->id_dispo;
-                                        $nome = $show->nome_dispo;
-                                        $marca = $show->marca_dispo;
-                                        $foto = $show->foto_dispo;
-                                        $andar = $show->andar_dispo;
-                                    }  
-                                }else{
-                                    echo 'Contato não inserido!';
-                                }
-                            }catch(PDOException $e){
-                              echo "<strong>ERRO DE SELECT NO PDO: </strong>".$e->getMessage();
-                            }
-                            
-                            ?>
+ 
         <h1>Editar dispositivo</h1>
     </div>
     <div class="section wf-section">
@@ -121,8 +96,33 @@
                         <div class="small-divider"></div>
                         <!--<div class="contact-text">Obrigado pelo interesse! Por favor preencha o formulário abaixo se desejar trabalhar junto.</div>-->
                         <div class="w-form">
-                        
-                            <form id="email-form" name="email-form" data-name="Email Form" method="get">
+                        <?php
+                            include_once('config/conexao.php');
+                            $id=$_GET['idUp'];
+                            $select = "SELECT * FROM tb_dispositivos WHERE id_dispo=:id";
+                            try{
+                                $resultSel = $conect->prepare($select);
+                                $resultSel->bindParam(':id',$id,PDO::PARAM_INT);
+                                $resultSel->execute();
+
+                                $contar=$resultSel->rowCount();
+                                if($contar>0){
+                                    while($show = $resultSel->FETCH(PDO::FETCH_OBJ)){
+                                        $idDispo = $show->id_dispo;
+                                        $nome = $show->nome_dispo;
+                                        $marca = $show->marca_dispo;
+                                        $foto = $show->foto_dispo;
+                                    }  
+                                }else{
+                                    echo 'Contato não Cadastrado!';
+                                }
+                            }catch(PDOException $e){
+                            echo "<strong>ERRO DE SELECT NO PDO: </strong>".$e->getMessage();
+                            }
+                            
+
+                         ?>
+                            <form id="email-form" name="email-form" data-name="Email Form" method="post">
                                 <div class="label-float">
                                 <input type="text" class="text-field w-input" maxlength="256" value="<?php echo $nome;?>" name="name" data-name="Name" placeholder="" id="name" >
                                 <label>Editar nome do dispositivo</label>
@@ -135,19 +135,73 @@
                                 </div>
 
                                 <input  class="foto-arquivo" type="file" name="Fotodisp" id="Fotodisp">
-                                <span><?php echo $foto; ?></span>
+
 
 
                                 <br>
-                                  <select class="select-drop" name="Andar" id="Andar">
-                                      <option value="Pandar" selected>1 Andar</option>
-                                      <option value="Sandar">2 Andar</option>
-                                      <option value="Tandar">3 Andar</option>
-                                      <option value="Qandar">4 Andar</option>
+                                  <select class="select-drop" name="andar" id="Andar">
+                                      <option value="1" selected>1 Andar</option>
+                                      <option value="2">2 Andar</option>
+                                      <option value="3">3 Andar</option>
+                                      <option value="4">4 Andar</option>
                                   </select>
                             
-                                <input type="submit" value="Salvar" data-wait="Por favor espere..." class="submit-button w-button" />
+                                <input name="btnEditar" type="submit" value="Salvar" data-wait="Por favor espere..." class="submit-button w-button" />
                             </form>
+                            <?php
+                                if(isset($_POST['btnEditar'])){
+                                    $NOMEDISP = $_POST['name'];
+                                    $MARCADISP = $_POST['marca'];
+                                    $ANDARDISP = $_POST['andar'];
+
+                                    if(!empty($_FILES['Fotodisp']['name'])){
+                                    $formatP = array("png","jpg","jpeg","JPG");
+                                    $extensao = pathinfo($_FILES['Fotodisp']['name'], PATHINFO_EXTENSION);
+
+                                    if(in_array($extensao, $formatP)){
+                                        $pasta = "img/contato/";
+                                        $temporario = $_FILES['Fotodisp']['tmp_name'];
+                                        $novoNome = uniqid().".$extensao";
+                                        if(move_uploaded_file($temporario, $pasta.$novoNome)){
+                                            
+                                        }else{
+                                            echo "Erro, não foi possível fazer o upload do arquivo!";
+                                        }
+
+                                    }else{
+                                        echo "Formato de imagem Inválida";
+                                    }
+                                    }else{
+                                    $novoNome=$foto;
+                                    }
+                                    $editar = "UPDATE tb_dispositivos SET nome_dispo=:nome,marca_dispo=
+                                    :marca,foto_dispo=:foto,andar_dispo=:andar WHERE 
+                                    id_dispo=:id";
+                                    try{
+                                        $result = $conect->prepare($editar);
+                                        $result->bindParam(':id',$id,PDO::PARAM_STR);
+                                        $result->bindParam(':nome',$NOMEDISP,PDO::PARAM_STR);
+                                        $result->bindParam(':marca',$MARCADISP,PDO::PARAM_STR);
+                                        $result->bindParam(':foto',$novoNome,PDO::PARAM_STR);
+                                        $result->bindParam(':andar',$ANDARDISP,PDO::PARAM_STR);
+                                        $result->execute();
+
+                                        $contar = $result->rowCount();
+                                        if($contar > 0){
+                                        echo '<br><div class="mensagem">
+                                            Dispositivo editado com sucesso!
+                                            </div>';
+                                        }else{
+                                        echo '<br><div class="mensagemerro">
+                                            Dispositivo não editado!
+                                            </div>';
+                                        }
+                                    }catch(PDOException $e){
+                                        echo "<strong>ERRO DE CADASTRO PDO = </strong>".$e->getMessage();
+                                    }
+                                }
+                            ?>
+                        
                             <div class="success-message w-form-done">
                                 <p class="success-text">Obrigado! Seu pedido foi enviado!</p>
                             </div>
@@ -168,8 +222,7 @@
                 <div class="w-col w-col-3"><a href="index.html" class="logo-footer w-nav-brand">
                         <div class="logo-text footer-logo">Siste<strong data-new-link="true">MAX</strong></div>
                     </a></div>
-                <div class="footer-link-col w-clearfix w-col w-col-9"><a href="#" data-ix="show-contact-overlay"
-                        class="nav-link footer-link contact">Contact</a>
+                <div class="footer-link-col w-clearfix w-col w-col-9">
                         <a href="agendamentos.html" aria-current="page" class="nav-link footer-link">Agendamentos</a>
                         <a href="anuncio.html" class="nav-link footer-link">Anúncios</a>
                         <a href="dispositivos.php" class="nav-link footer-link w--current">Dispositivos</a>

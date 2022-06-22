@@ -52,7 +52,7 @@
                 <div class="w-form">
                 <form id="email-form" name="email-form" data-name="Email Form" method="get">
                         <input type="text" class="text-field w-input" maxlength="256" name="name" data-name="Name" placeholder="Insira seu nome" id="name" />
-                        <input type="email" class="text-field w-input" maxlength="256" name="email" data-name="Email" placeholder="Insira seu endereço de email" id="email" required="" />
+                        <input type="email" class="text-field w-input" maxlength="256" name="email" data-name="Email" placeholder="Insira seu endereço id" id="email" required="" />
                         <input type="submit" value="Entrar" data-wait="Por favor espere..." class="submit-button w-button" />
                     </form>
                     <div class="success-message w-form-done">
@@ -106,12 +106,7 @@
                                  placeholder="" id="marca" />
                                  <label>Marca</label>
                                 </div>
-
-                                <div class="label-float">
-                                    <input type="text" class="text-field w-input" maxlength="256" name="resp" data-name="Text" 
-                                    placeholder="" id="resp" />
-                                    <label>Responsável</label>
-                                </div>        
+ 
                                 
                                 <br>
 
@@ -125,7 +120,7 @@
                                   <br>
                                   <br>
                                   <div>
-                                    <label class="fundo" for="fotodisp"> Upload da foto </label>
+                                
                                     <input type="file" name="foto" id="foto">
                                   </div>  
                                 <input name="btnCadastro" type="submit" value="Salvar" data-wait="Por favor espere..." class="submit-button w-button" />
@@ -136,7 +131,6 @@
                             if(isset($_POST['btnCadastro'])){
                                 $nome = $_POST['nome'];
                                 $marca = $_POST['marca'];
-                                $resp = $_POST['resp'];
                                 $andar = $_POST['andar'];
                                 $formatP = array("png","jpg","jpeg","JPG");
                                 $extensao = pathinfo($_FILES['foto']['name'], PATHINFO_EXTENSION);
@@ -146,32 +140,23 @@
                                     $temporario = $_FILES['foto']['tmp_name'];
                                     $novoNome = uniqid().".$extensao";
                                     if(move_uploaded_file($temporario, $pasta.$novoNome)){
-                                        $cadastro = "INSERT INTO tb_dispositivos (nome_dispo, marca_dispo, resp_dispo, andar_dispo) VALUES (:nome, :marca, :resp, :andar, :foto)";
+                                        $cadastro = "INSERT INTO tb_dispositivos (nome_dispo, marca_dispo, andar_dispo, foto_dispo) VALUES (:nome, :marca, :andar, :foto)";
                                     try{
                                         $result = $conect->prepare($cadastro);
                                         $result->bindParam(':nome',$nome,PDO::PARAM_STR);
                                         $result->bindParam(':marca',$marca,PDO::PARAM_STR);
-                                        $result->bindParam(':resp',$resp,PDO::PARAM_STR);
                                         $result->bindParam(':andar',$andar,PDO::PARAM_STR);
                                         $result->bindParam(':foto',$novoNome,PDO::PARAM_STR);
                                         $result->execute();
                                         $contar = $result->rowCount();
                                         if($contar > 0){
-                                            echo '<div class="container">
-                                                      <div class="alert alert-success alert-dismissible">
-                                                      <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-                                                      <h5><i class="icon fas fa-check"></i> OK!</h5>
-                                                      Contato inserido com sucesso !!!
-                                                    </div>
-                                                  </div>';
+                                            echo '<br><div class="mensagem">
+                                            Cadastrado com sucesso!
+                                            </div>';
                                           }else{
-                                            echo '<div class="container">
-                                                      <div class="alert alert-danger alert-dismissible">
-                                                      <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-                                                      <h5><i class="icon fas fa-check"></i> Ops!</h5>
-                                                      Contato não cadastrados !!!
-                                                    </div>
-                                                  </div>';
+                                            echo '<br><div class="mensagemerro">
+                                            Não cadastrado!
+                                            </div>';
                                           }
                                     }catch(PDOException $e){
                                         echo "<strong>ERRO DE CADASTRO PDO = </strong>".$e->getMessage();
